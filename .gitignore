@@ -1,0 +1,8 @@
+node_modules
+dist
+angular
+.angulardoc.json
+.vscode
+Pipfile
+Pipfile.lock
+django_project\django_project\settings.py
