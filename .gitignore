@@ -5,4 +5,4 @@ angular
 .vscode
 Pipfile
 Pipfile.lock
-django_project\django_project\settings.py
+**/django_project/django_project/settings.py
