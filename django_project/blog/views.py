@@ -29,21 +29,28 @@ def about(request):
 
 def adduser(request):
     if request.method == "POST":
+        print(f"Data: {request.POST}")
         if request.POST.get("username") and request.POST.get("password") and request.POST.get("email"):
-            username = request.POST.get("username")
+            username = request.POST.get("username").lower()
+            firstname = request.POST.get("firstname").upper()
+            lastname = request.POST.get("lastname").upper()
             password = request.POST.get("password")
+            dob = request.POST.get("dob")
             email = request.POST.get("email")
-            #print(f"Received {username}, {password}, {email} from adduser.")
+            print(f"Received {username}, {password}, {email} from adduser.")
             user = TbDjangoUser()
             user.username = username
+            user.first_name = firstname
+            user.last_name = lastname
             user.password = password
+            user.dob = dob
             user.email = email
             insert_stmt = (
                 "INSERT INTO django.tb_django_user (username,first_name,last_name,password,dob,email) "
                 "VALUES (%s, %s, %s, %s, %s, %s)"
             )
             cursor = connection.cursor()
-            cursor.execute(insert_stmt, (username,password,email))
+            cursor.execute(insert_stmt, (username,firstname,lastname,password,dob,email))
             return render(request, template_name="blog/adduser.html",context={"title":"Add User"})
     else:
         return render(request, template_name="blog/adduser.html",context={"title":"Add User"})

@@ -11,23 +11,31 @@
                 <div id="usernameHelp" class="form-text"></div>
             </div>
             <div class="mb-3">
-                <label for="txtPassword" class="form-label">Password</label>
-                <input type="password" class="form-control" id="txtPassword" name="password">
+                <label for="txtFirstName" class="form-label">First Name</label>
+                <input type="text" class="form-control" id="txtFirstName" name="firstname">
+            </div>
+            <div class="mb-3">
+                <label for="txtLastName" class="form-label">Last Name</label>
+                <input type="text" class="form-control" id="txtLastName" name="lastname">
             </div>
             <div class="mb-3">
                 <label for="txtPassword" class="form-label">Password</label>
                 <input type="password" class="form-control" id="txtPassword" name="password">
             </div>
-            <div class="mb-3 form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1" name="password">
-                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            <div class="mb-3">
+                <label for="txtConfirmPassword" class="form-label">Confirm Password</label>
+                <input type="password" class="form-control" id="txtConfirmPassword" name="confirmpassword">
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-            UserName: <input type="text"  /><br/>
-            Password: <input type="password" name="password" /><br/>
-            Email: <input type="email" name="email" /><br/>
+            <div class="mb-3">
+                <label for="txtDob" class="form-label">Birthdate</label>
+                <input type="date" class="form-control" id="txtDob" name="dob">
+            </div>
+            <div class="mb-3">
+                <label for="txtEmail" class="form-label">Email</label>
+                <input type="email" class="form-control" id="txtEmail" name="email">
+            </div>
 
-            <input type="submit" class="btn btn-primary" value="Submit"/>
+            <input type="submit" class="btn btn-primary" value="Sign Up"/>
         </form>
     </div>
 {% endblock content%}

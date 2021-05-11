@@ -1,0 +1,8 @@
+{
+    "username": "anderson",
+    "first_name": "Anderson",
+    "last_name": "Bottenham",
+    "password": "ander123",
+    "dob": "1984-01-28",
+    "email": "anderson.bottenham@microsoft.com"
+}
