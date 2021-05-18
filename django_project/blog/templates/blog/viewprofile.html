@@ -1,0 +1,82 @@
+{% extends "blog/base.html" %}
+{% block content %}
+    <div class="container mt-5 d-flex justify-content-center">
+        <div class="card p-3">
+            <div class="d-flex align-items-center">
+                <div class="image"> <img src="{{ user.image_file.url }}" class="rounded" width="180">
+                </div>
+                <div class="ms-3 w-100">
+                    <h4 class="mb-0 mt-0">{{user.first_name}} {{user.last_name}}</h4>
+                    <div class="d-flex flex-column">
+                        <span title="Dob">{{user.dob | date:'d M Y'}}</span>
+                        <span>{{user.email}}</span>
+                    </div>
+                    <div class="p-2 mt-2 bg-light d-flex justify-content-between rounded text-body stats">
+                        <div class="d-flex flex-column">
+                            <span class="articles fw">Posts</span>
+                            <span class="number1 fw-bold">
+                                {% if posts %}
+                                    {{ posts|length }}
+                                {% else %}
+                                    0
+                                {% endif %}
+                            </span>
+                        </div>
+                        <div class="d-flex flex-column"> <span class="followers">Followers</span> <span class="number2">980</span> </div>
+                        <div class="d-flex flex-column"> <span class="rating">Rating</span> <span class="number3">8.9</span> </div>
+                    </div>
+                    <div class="button mt-2 d-flex flex-row align-items-center">
+                        <button class="btn btn-sm btn-outline-primary w-100">Chat</button>
+                        <button class="btn btn-sm btn-primary w-100 ms-2">Follow</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card mt-5">
+                <div class="card-header">
+                    Posts
+                </div>
+                <div class="card-body">
+                    {% for post in posts %}
+                        <div class="card m-1">
+                            <div class="card-body">
+                                <h5 class="card-title">{{post.title}} <small class="float-end text-muted fs-6 fw-light">{{post.date_posted|date:'d M Y'}} {{post.date_posted|time:'H:i:s'}}</small></h5>
+                                <p class="card-text">{{post.content}}</p>
+                                <div class="button mt-2 d-flex flex-row align-items-center col-4">
+                                    <button class="btn btn-sm btn-dark w-100 btnEditPost" data-post_id="{{post.post_id}}">Edit</button>
+                                    <button class="btn btn-sm btn-danger w-100 ms-2 btnDeletePost">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>  
+        <!-- Modal -->
+        <div class="modal fade" id="mdlFrmUpdPost" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="text" name="post_id" value=""/>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Understood</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $("button.btnEditPost").on("click", function(){
+            var mdl = new bootstrap.Modal(document.getElementById('mdlFrmUpdPost'), {keyboard: false})
+            var txtPostId = $("input[name='post_id']")
+            var post_id = $(this).data("post_id")
+            txtPostId.val(post_id)
+            mdl.show();
+        });
+    </script>
+{% endblock content %}

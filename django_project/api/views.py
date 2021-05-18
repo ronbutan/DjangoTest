@@ -2,8 +2,10 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from rest_framework.parsers import JSONParser
+from rest_framework import status
 from .serializers import UserSerializer
-from django.db import connection
+from django.db import connection, DatabaseError
 from blog.models import TbDjangoUser
 
 
@@ -41,18 +43,30 @@ def userlist(request):
 
 @api_view(["GET"])
 def userDetail(request, pk):
-    sql = "SELECT username,first_name,last_name,password,dob,email FROM django.tb_django_user WHERE username = %s"
-    cursor = connection.cursor()
-    cursor.execute(sql, (pk,))
-    (username,first_name,last_name,password,dob,email) = cursor.fetchone()
-    user = TbDjangoUser()
-    user.username = username
-    user.first_name = first_name
-    user.last_name = last_name
-    user.password = password
-    user.dob = dob
-    user.email = email
-    cursor.close()
+    user = TbDjangoUser.objects.get(username=pk)
+    # sql = "SELECT username,first_name,last_name,password,dob,email FROM django.tb_django_user WHERE username = %s"
+    # cursor = connection.cursor()
+    # try:
+    #     cursor.execute(sql, (pk,))
+    # except DatabaseError as dbe:
+    #     print(type(dbe.args))
+    #     msg = f"DB error [{dbe.args[0]}]"
+    #     return JsonResponse({"message":msg})
+    # except TypeError as te:
+    #     print(f"Message: {te.args}")
+    #     return JsonResponse({"message":"db error"})
+    # except:
+    #     print("Something wrong!!")
+    #     JsonResponse({"message":"something wrong"})
+    # (username,first_name,last_name,password,dob,email) = cursor.fetchone()
+    # user = TbDjangoUser()
+    # user.username = username
+    # user.first_name = first_name
+    # user.last_name = last_name
+    # user.password = password
+    # user.dob = dob
+    # user.email = email
+    # cursor.close()
     serializer = UserSerializer(user, many=False)
     return Response(serializer.data)
 
@@ -85,7 +99,8 @@ def userCreate(request):
 
 @api_view(["POST"])
 def userUpdate(request, pk):
-    serializer = UserSerializer(data=request.data)
+    u = TbDjangoUser.objects.get(username=pk)
+    serializer = UserSerializer(instance=u, data=request.data)
     print(f"SERIALIZER: {serializer}")
     print(f"Valid: {serializer.is_valid()}")
     #if serializer.is_valid():
@@ -110,3 +125,10 @@ def userUpdate(request, pk):
     cursor = connection.cursor()
     cursor.execute(update_stmt, (firstname,lastname,dob,email,username))
     return Response(serializer.data)
+
+@api_view(["DELETE"])
+def userDelete(request, pk):
+    u = TbDjangoUser.objects.get(username=pk)
+    m = str(u)
+    u.delete()
+    return Response(m)
