@@ -1,0 +1,45 @@
+{% extends "blog/base.html" %}
+{% block content %}
+    <div class="container mt-5 d-flex flex-column">
+        {% for movie in movies %}
+        <div class="card mt-2 p-3 w-75">
+            <div class="d-flex">
+                <div class="image"> <a href="{% url 'movie-update' movie.movie_id %}" title="{{movie.title}}"><img src="{{ movie.image_file.url }}" class="rounded" width="180" height=220></a>
+                </div>
+                <div class="ms-3 w-100">
+                    <h4 class="mb-0 mt-0"><a href="{% url 'movie-update' movie.movie_id %}">{{movie.title}}</a></h4>
+                    <div class="d-flex flex-column">
+                        <span title="classification">{{movie.classification}}</span>
+                    </div>
+                    <div class="p-2 mt-2 bg-light d-flex justify-content-between rounded text-body stats">
+                        <div class="d-flex flex-column">
+                            <span class="articles fw">Box office</span>
+                            <span class="number1 fw-bold">
+                                {{movie.box_office}}{{movie.box_office_uom}}
+                            </span>
+                        </div>
+                        <div class="d-flex flex-column"> <span class="followers">Followers</span> <span class="number2">980</span> </div>
+                        <div class="d-flex flex-column"> <span class="rating">Rating</span> <span class="number3">8.9</span> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>    
+    
+{% endblock content %}
+
+
+<!--
+<article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">{{movie.title}}</a>
+              <small class="text-muted"></small>
+            </div>
+            <h2><a class="article-title" href="#"></a></h2>
+            <p class="article-content">{{ movie.synopsis }}</p>
+          </div>
+        </article>
+
+-->

@@ -1,0 +1,90 @@
+{% extends "blog/base.html" %}
+{% block content %}
+    <h1>Movie Details</h1>
+    <hr/>
+    <div>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-3">
+                <input type="hidden" name=movie_id value="{{movie.movie_id}}"/>
+                <label for="txtTitle" class="form-label">Title</label>
+                <input type="text" class="form-control" id="txtTitle" name="title" value="{{movie.title}}">
+            </div>
+            <div class="mb-3">
+                <label for="ddlClassification" class="form-label">Rating</label>
+                <select id="ddlClassification" name="classification" class="form-select" aria-label="Default select example">
+                    {% for rating in ratings%}
+                        {% if movie.rating == rating.rating_cd%}
+                            <option value="{{rating.rating_cd}}" selected>{{rating.rating_desc}}</option>
+                        {% else %}
+                            <option value="{{rating.rating_cd}}">{{rating.rating_desc}}</option>
+                        {% endif %}
+                    {% endfor %}
+                  </select>
+            </div>
+            <div class="row mb-3 g-3">
+                <div class="col-9">
+                    <label for="txtBoxOffice" class="form-label">Box Office</label>
+                    <input type="number" class="form-control" id="txtBoxOffice" name="box_office" value="{{ movie.box_office }}">
+                </div>
+                <div class="col-3">
+                    <label for="ddlBoxOfficeUom" class="form-label">Rating</label>
+                    <select id="ddlBoxOfficeUom" name="box_office_uom" class="form-select" aria-label="Default select example">
+                        <option value="m" {% if movie.box_office_uom == "m" %}selected{% endif %}>m</option>
+                        <option value="b" {% if movie.box_office_uom == "b" %}selected{% endif %}>b</option>
+                        <option value="k" {% if movie.box_office_uom == "k" %}selected{% endif %}>k</option>
+                  </select>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="txtRunTime" class="form-label">Duration (mins)</label>
+                <input type="number" class="form-control" id="txtRunTime" name="running_time" value="{{movie.running_time}}">
+            </div>
+            <div class="mb-3">
+                <label for="txtReleaseDate" class="form-label">Release Date</label>
+                <input type="date" class="form-control" id="txtReleaseDate" name="release_date" value="{{movie.release_date|date:'Y-m-d'}}">
+            </div>
+            <div class="input-group mb-3">
+                <input type="file" name="image_file" class="file" accept="image/*">
+                <input type="text" class="form-control" disabled placeholder="Upload File" id="file">
+                <div class="input-group-append">
+                    <button type="button" class="browse btn btn-primary">Browse...</button>
+                </div>
+            </div>
+            <div class="ml-2 col-sm-6">
+                <img src="{{movie.image_file.url}}" id="preview" class="img-thumbnail"/>
+            </div>
+            <div class="mb-3">
+                <label for="txtSynopsis" class="form-label">Synopsis</label>
+                <textarea class="form-control" id="txtSynopsis" rows="3" name="synopsis" value="{{movie.synopsis}}"></textarea>
+            </div>
+            <div class="input-group mb-3">
+                <input type="file" name="srt_file" class="file" accept=".srt">
+                <input type="text" class="form-control" disabled placeholder="Upload File" id="srtfile">
+                <div class="input-group-append">
+                    <button type="button" class="browse btn btn-primary">Browse...</button>
+                </div>
+            </div>
+            <input type="submit" class="btn btn-success" value="Update" title="Update movie"/>
+        </form>
+    </div>
+    <script type="text/javascript">
+        $(".browse").on("click", function() {
+            var file = $(this).parent().parent().find(".file");
+            file.trigger("click");
+        });
+        $('input[type="file"]').change(function(e) {
+            var fileName = e.target.files[0].name;
+            $(this).next().val(fileName);
+            if ($(this).prop("name") == "image_file"){
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    // get loaded data and render thumbnail.
+                    document.getElementById("preview").src = e.target.result;
+                };
+                // read the image file as a data URL.
+                reader.readAsDataURL(this.files[0]);
+            }
+        });
+    </script>
+{% endblock content%}
