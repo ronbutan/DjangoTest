@@ -1,0 +1,36 @@
+[ {
+  "baseItem" : {
+    "id" : "_Ir1SIMa8EfGW3-egr2cydA",
+    "version" : "0.1",
+    "type" : "job"
+  },
+  "relatedItems" : [ {
+    "id" : "_4ubecMa0EfGW3-egr2cydA",
+    "version" : "Latest",
+    "type" : "context"
+  }, {
+    "id" : "_KS8ooMa2EfGW3-egr2cydA",
+    "version" : "Latest",
+    "type" : "context"
+  }, {
+    "id" : "_OSJSAMbKEfGFaIlDTgPEiw",
+    "version" : "Latest",
+    "type" : "context"
+  }, {
+    "id" : "built-in",
+    "version" : "Latest",
+    "type" : "context"
+  }, {
+    "id" : "_MDKaUMa8EfGW3-egr2cydA",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_MDKaUMa8EfGW3-egr2cydA - tb_product",
+    "version" : "Latest",
+    "type" : "schema"
+  }, {
+    "id" : "_MDKaUMa8EfGW3-egr2cydA - tb_shop",
+    "version" : "Latest",
+    "type" : "schema"
+  } ]
+} ]

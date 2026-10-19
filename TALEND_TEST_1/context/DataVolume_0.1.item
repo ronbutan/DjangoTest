@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd">
+  <talendfile:ContextType xmi:id="_KTKEAMa2EfGW3-egr2cydA" confirmationNeeded="false" hide="false" name="Development">
+    <contextParameter xmi:id="_KTKEAca2EfGW3-egr2cydA" comment="" name="Limit" prompt="Limit?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="LIMIT 1000"/>
+  </talendfile:ContextType>
+  <talendfile:ContextType xmi:id="_KTKEAsa2EfGW3-egr2cydA" confirmationNeeded="false" hide="false" name="Production">
+    <contextParameter xmi:id="_KTKEA8a2EfGW3-egr2cydA" comment="" name="Limit" prompt="Limit?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value=""/>
+  </talendfile:ContextType>
+</xmi:XMI>

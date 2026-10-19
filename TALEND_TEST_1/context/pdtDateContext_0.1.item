@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd">
+  <talendfile:ContextType xmi:id="_OSXUcMbKEfGFaIlDTgPEiw" confirmationNeeded="false" hide="false" name="development">
+    <contextParameter xmi:id="_OSXUccbKEfGFaIlDTgPEiw" comment="" name="system_name" prompt="system_name?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value=""/>
+    <contextParameter xmi:id="_OSX7gMbKEfGFaIlDTgPEiw" comment="" name="source_location" prompt="source_location?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value=""/>
+    <contextParameter xmi:id="_OSX7gcbKEfGFaIlDTgPEiw" comment="" name="destination_location" prompt="destination_location?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value=""/>
+    <contextParameter xmi:id="_OSX7gsbKEfGFaIlDTgPEiw" comment="" name="retention_days" prompt="retention_days?" promptNeeded="false" repositoryContextId="built-in" type="id_Integer" value="7"/>
+    <contextParameter xmi:id="_TTdGYMbjEfGtvuSQTV0xXA" comment="" name="file_regex" prompt="file_regex?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value=""/>
+  </talendfile:ContextType>
+  <talendfile:ContextType xmi:id="_OSX7g8bKEfGFaIlDTgPEiw" confirmationNeeded="false" hide="false" name="production">
+    <contextParameter xmi:id="_OSX7hMbKEfGFaIlDTgPEiw" comment="" name="system_name" prompt="system_name?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value=""/>
+    <contextParameter xmi:id="_OSX7hcbKEfGFaIlDTgPEiw" comment="" name="source_location" prompt="source_location?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value=""/>
+    <contextParameter xmi:id="_OSX7hsbKEfGFaIlDTgPEiw" comment="" name="destination_location" prompt="destination_location?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value=""/>
+    <contextParameter xmi:id="_OSX7h8bKEfGFaIlDTgPEiw" comment="" name="retention_days" prompt="retention_days?" promptNeeded="false" repositoryContextId="built-in" type="id_Integer" value="7"/>
+    <contextParameter xmi:id="_TTdGYcbjEfGtvuSQTV0xXA" comment="" name="file_regex" prompt="file_regex?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value=""/>
+  </talendfile:ContextType>
+</xmi:XMI>

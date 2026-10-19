@@ -1,0 +1,26 @@
+{
+  "itemId" : "_MDKaUMa8EfGW3-egr2cydA",
+  "contextList" : [ {
+    "contextName" : "Development",
+    "repoId" : "_4ubecMa0EfGW3-egr2cydA",
+    "parameterList" : [ {
+      "id" : "_4uo50ca0EfGW3-egr2cydA",
+      "name" : "DBConnect_Password"
+    }, {
+      "id" : "_4uo50sa0EfGW3-egr2cydA",
+      "name" : "DBConnect_Server"
+    }, {
+      "id" : "_4uo508a0EfGW3-egr2cydA",
+      "name" : "DBConnect_Database"
+    }, {
+      "id" : "_4uo51Ma0EfGW3-egr2cydA",
+      "name" : "DBConnect_AdditionalParams"
+    }, {
+      "id" : "_4uo51ca0EfGW3-egr2cydA",
+      "name" : "DBConnect_Port"
+    }, {
+      "id" : "_4uo51sa0EfGW3-egr2cydA",
+      "name" : "DBConnect_Login"
+    } ]
+  } ]
+}
